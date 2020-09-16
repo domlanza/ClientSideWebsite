@@ -1,0 +1,83 @@
+<!--Dominic Lanza
+Professor Sally Kyvernitis
+CIS 3344
+09/04/2020
+This is HW2 homepage with Drop Down Menus and Do it yourself
+routing. My website is a baking website.-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Homemade Food Recipes</title>
+        <!--External stylesheets-->
+        <link rel="stylesheet" type="text/css" href="style/mystyle.css">
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" />  
+        <link href="style/main.css" rel="stylesheet" type="text/css" /> 
+    </head>
+    <body>
+        <!--encompasses title div title*/-->
+        <div id="titleNav">
+            <div id="title">
+                Dom's Baking Addiction
+            </div>
+
+            <div id="nav">
+                <div class="dropdown">
+                    <a href ="#/home">Home</a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader">Account</div>
+                    <div class="dropContent">
+                        <a>Register</a> <br/>
+                        <a>Log In</a> <br/>
+                        <a>Profile</a> <br/>
+                        <a>Log Out</a>
+                    </div> 
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader">Search</div>
+                    <div class="dropContent">
+                        <a>Users</a> <br/>
+                        <a>Recipes</a> 
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader">Tutorial</div>
+                    <div class="dropContent">
+                        <a>Proposal</a> <br/>
+                        <a>Proof Of Concept</a> <br/>
+                        <a>Tutorial Home</a> <br/>
+                        <a>Demo</a> <br/>
+                    </div> 
+                </div>          
+                <div class="dropdown">
+                    <a href = "#/blog">Blog</a>
+                </div>
+            </div>
+        </div>
+        <!--titlenav div ends here-->
+        <!--content div begins here-->
+        <div id="view">
+        </div>
+        <!--        components for JavaScript-->
+        <script src="js/components/home.js"></script>
+        <script src="js/components/blog.js"></script>
+        <script src="js/reusable/dropdown.js"></script>
+        <script src="js/reusable/router.js"></script>
+        <br/>   
+        <!--content div ends here-->
+        <div id="footer">
+            Dominic Lanza
+        </div>
+        <script>
+            window.onclick = function (event) {
+                var clickedEle = event.target;
+                dropdown(clickedEle);
+            }
+            "use strict";
+            function inject(what) {
+                document.getElementById("view").innerHTML = "";
+                document.getElementById("view").appendChild(what);
+            }
+        </script>
+    </body>
+</html>
