@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .question {
+                border: 0.25rem solid black;
+                margin: 1rem;
+            }
+            .question div {
+                border: 0.1rem solid grey; 
+                margin: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="question" id="1_extractProps"></div>
+
+        <div class="question" id="2_makePrettyTable"></div>
+
+        <div class="question" id="3_makeClickEvents"></div>
+
+        <script src="js/extractPropsAndValues.js"></script>
+        <script src="js/makeTableWithHeading.js"></script>
+        <script src="js/makeTableWithClickEvents.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            function inject(ele, toId) {
+                document.getElementById(toId).appendChild(ele);
+            }
+
+            var myDiv; // will reuse this for all questions... 
+
+            // **************************************************************************************************
+            // question 1. See 30_Assoc_Array for help
+            myDiv = extractPropsAndValues({classNum: "CIS 1068", numStudents: 50, semester: "fall", year: 2020});
+            inject(myDiv, "1_extractProps");
+            myDiv = extractPropsAndValues({empName: "Fred Jones", salary: "$75,000", birthYear: 1980});
+            inject(myDiv, "1_extractProps");
+
+            // **************************************************************************************************
+            // question 2
+            var carList = [
+                {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png", condition: "fair", price: "$21,000"},
+                {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "great", price: "$15,000"},
+                {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "poor", price: "$5,000"}
+            ];
+            
+            for (var i = 0; i < carList.length; i++) {
+                carList[i].image = "<img  src='" + carList[i].image + "' style='width:12rem'>";
+            }
+
+             // See 32_makeTablePrettier and 11_parameter_objects for help. 
+            myDiv = makeTableWithHeading({objList: carList, heading: "Cars For Sale"});
+            inject(myDiv, "2_makePrettyTable");
+
+            var funList = [
+                {
+                    "item": "Jet Ski",
+                    "pic": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/jetski.jpg",
+                    "price": "5000"
+                },
+                {
+                    "item": "Kayak",
+                    "pic": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/kayak.jpg",
+                    "price": "1000"
+                },
+                {
+                    "item": "Pontoon Boat",
+                    "pic": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/pontoon.jpg",
+                    "price": "30000"
+                }
+            ];
+            
+            for (var i = 0; i < funList.length; i++) {
+                funList[i].pic = "<img  src='" + funList[i].pic + "' style='width:12rem'>";
+            }
+            // Place code here to convert image file names to <img> tags.
+            myDiv = makeTableWithHeading({objList: funList, heading: "Boats For Sale"});
+            inject(myDiv, "2_makePrettyTable");
+
+
+            // **************************************************************************************************
+            // question 3 (your two object arrays should already have image tags set up).
+
+            myDiv = makeTableWithClickEvents(carList);
+            inject(myDiv, "3_makeClickEvents");
+
+
+            // Place code here to convert image file names to <img> tags.
+            myDiv = makeTableWithClickEvents(funList);
+            inject(myDiv, "3_makeClickEvents");
+            
+            var myCar = {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png", condition: "good", Price: 21000};
+            var yourCar = {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "poor", price: 15000};
+
+            extractPropsAndValues(myCar);
+            extractPropsAndValues(yourCar);
+               
+            
+
+        </script>
+    </body>
+</html>
